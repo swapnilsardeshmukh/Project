@@ -1,100 +1,28 @@
-# Project
- 
-// Create an abstract class. 
 using System;
-abstract class TwoDShape
+public class ReadOnlyTest
 {
-    double pri_width;  // private 
-    double pri_height; // private 
-    string pri_name;   // private 
-
-    // A default constructor.  
-    public TwoDShape()   {   }
-    // Parameterized constructor.  
-    public TwoDShape(double w, double h, string n)
-    {
-        width = w;
-        height = h;
-        name = n;
-        Console.WriteLine("1");
-    }
-
-    // Properties for width, height, and name 
-    public double width
-    {
-        get { return pri_width; }
-        set { pri_width = value; }
-    }
-
-    public double height
-    {
-        get { return pri_height; }
-        set { pri_height = value; }
-    }
-
-    public string name
-    {
-        get { return pri_name; }
-        set { pri_name = value; }
-    }
-
-    public void showDim()
-    {
-        Console.WriteLine("Width and height are " +
-                           width + " and " + height);
-    }
-
-    // Now, area() is abstract. 
-    public abstract double area();
-}
-
-// A derived class of TwoDShape for triangles. 
-class Triangle : TwoDShape
-{    // A default constructor.  
-    public Triangle()   {       }
-        // Constructor for Triangle.  
-    public Triangle(double w, double h) :  base(w, h, "triangle")
-    {       Console.WriteLine("2");    }
-      // Override area() for Triangle. 
-    public override double area()
-    {
-        return width * height / 2;
-    }
-
- }
-
-// A derived class of TwoDShape for rectangles.   
-class Rectangle : TwoDShape
-{
-    // Constructor for Rectangle.  
-    public Rectangle(double w, double h) : base(w, h, "rectangle") { Console.WriteLine("3"); }
-
-       // Override area() for Rectangle. 
-    public override double area()
-    {
-        return width * height;
-    }
-}
-
-class AbsShape
-{
-    public static void Main()
-    {
-        TwoDShape[] shapes = new TwoDShape[2];
-
-        shapes[0] = new Triangle(8.0, 12.0);
-        shapes[1] = new Rectangle(10, 4);
-        
-
-        for (int i = 0; i < shapes.Length; i++)
-        {
-            Console.WriteLine("object is " + shapes[i].name);
-            Console.WriteLine("Area is " + shapes[i].area());
-
-            Console.WriteLine();
+    class MyClass
+    {   public int x;
+        public readonly int y = 25; // Initialize a readonly field
+        public readonly int z;
+        public MyClass()
+        {          
+		 z = 24;   // Initialize a readonly instance field
         }
-        TwoDShape s = new Triangle(5, 7);
-        s.showDim();
-        Console.ReadLine();
+         public MyClass(int p1, int p2, int p3)
+        {   x = p1;
+            y = p2;
+            z = p3;
+          }
+         public void add() {
+          Console.WriteLine(y); }
+    }
+    public static void Main()
+    {   MyClass p1 = new MyClass(11, 21, 32);   // OK
+        Console.WriteLine("p1: x={0}, y={1}, z={2}", p1.x, p1.y, p1.z);
+        MyClass p2 = new MyClass();
+        p2.x = 55;   // OK
+       // p2.z = 88;
+        Console.WriteLine("p2: x={0}, y={1}, z={2}", p2.x, p2.y, p2.z);
     }
 }
