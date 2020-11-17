@@ -1,0 +1,44 @@
+What is LINQ
+LanguageIntegrated Query
+It helps us to query any type of datastore(sql,XML,Object in Memory)
+without having the need to know the sysntex specific to the data source.It also provides intellisense and compile time error
+
+ 
+open sqlserver explorer right click connection
+
+select database and drop table on linq to sql page
+
+1.top level Dot net
+
+2.linque query
+
+
+3. linque providers
+
+ it convert linq into representative  data source
+
+eg. linq to sql provide converts a linq query to T-SQL that SQL Server database can understands
+
+we also have third party provider that linq to twitter, linq Amazon,goole etc
+
+
+Create a web application with a webform having  gridview then add newItem  -data- Linq to sql
+
+int[] numb={1,2,3,4,5,6,7,8,9,10};
+
+
+
+GridView1.DataSource=from nm in numb where(nm%2)==0 select  nm;
+
+
+
+
+
+
+
+
+
+
+
+
+
