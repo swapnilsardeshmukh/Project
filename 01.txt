@@ -1,3 +1,4 @@
+//^(\w+\s?+.?+-?+,?+)*+\b
 static void QueryOverStrings()
 {
 // Assume we have an array of strings.
